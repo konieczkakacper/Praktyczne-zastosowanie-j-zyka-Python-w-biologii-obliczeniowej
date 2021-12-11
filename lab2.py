@@ -431,6 +431,16 @@ while True:
 Rozwiązując poprzednie zadanie być może wprowadziłe/aś zmienną, która przyjmowała `True` lub `False`,
 aby wyświetlić komunikat o przegranej użytkownika. Jeżeli tak, to zamiast tego spróbuj użyć klauzuli `else` pętli `for`.
 
+import random
+randomGenerator = random.randint(1, 10)
+
+for i in range(1,4):
+    option = int(input('Enter a number: '))
+    if option == randomGenerator:
+        print(f'You won! The nmber was {randomGenerator}')
+        break
+else:
+    print(f'Sorry, you failed! The number was {randomGenerator}')
 
 ## Zad. 23
 Dokończ poniższą pętle `for`, aby wypisać wszystkie dwunukleotydowe wyrazy znajdujące się w poniższej sekwencji.
