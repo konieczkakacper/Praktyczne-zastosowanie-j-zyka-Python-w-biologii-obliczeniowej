@@ -1,7 +1,7 @@
 # Operatory logiczne
 
 ## Zad. 1
-Liczby można porównywać za pomocą *operatorów porównania*. W wyniku otrzymujemy wartości logiczne (*boolean*): `True` lub `False`. 
+Liczby można porównywać za pomocą *operatorów porównania*. W wyniku otrzymujemy wartości logiczne (*boolean*): `True` lub `False`.
 
 Które z poniższych wyrażeń zwracają w wyniku `True`?
 
@@ -37,7 +37,7 @@ print('bio' not in 'Bioinfo')      # 5 --> True
 ## Zad. 3
 Python ma trzy operatory logiczne: `and`, `or` i `not`.
 
-> Na przykład, wyrażenie `x % 2 == 0 and x % 3 == 0` jest prawdziwe jeżeli liczba `x` jest podzielna przez `2` i `3`. 
+> Na przykład, wyrażenie `x % 2 == 0 and x % 3 == 0` jest prawdziwe jeżeli liczba `x` jest podzielna przez `2` i `3`.
 
 Napisz wyrażenie, które jest prawdziwe jeżeli liczba `x` jest większa od `10` lub jednocześnie podzielna przez `2` i `3`.
 x > 10 or x % 2 and x % 3
@@ -57,7 +57,7 @@ elif age > 18:
 elif age > 5:
     print("You can get candy")
 else:
-    print("You need a nap") 
+    print("You need a nap")
 ```
 age = int(input('How old are you? '))
 
@@ -69,7 +69,7 @@ elif age > 5:
     print("You can get candy")
 else:
     print("You need a nap")
-    
+
 ## Zad. 5
 Utwórz program `bmi.py`, który prosi użytkownika o podanie wzrostu (cm) i wagi (kg), i obliczy wskaźnik masy ciała (BMI, *Body Mass Index*). Następnie w oparciu o obliczoną wartość BMI program wyświetli stosowny komunikat.
 
@@ -78,7 +78,7 @@ Utwórz program `bmi.py`, który prosi użytkownika o podanie wzrostu (cm) i wag
               waga (kg)
  BMI = -----------------------
        wzrost (m) * wzrost (m)
- 
+
  Na przykład, BMI osoby ważącej 70 kg i mierzącej 175
  wynosi 70/(1.75 * 1.75) = 22.86
 
@@ -103,7 +103,7 @@ else:
 
 
 ## Zad. 6
-Mówi się, że każdy rok psa równy jest 7 latom człowieka. Na przykład, jak pies ma 10 lat to odpowiada on 70 letniemu człowiekowi. Jednak ponieważ pies zaczyna być dorosły w wieku 2 lat, sugeruje się, aby liczyć dwa pierwsze lata psa po 10,5 lat człowieka, a każdy kolejny rok psa liczyć jako 4 lata. Na przykład, jak pies ma 2 lata to odpowiada on 21-letniemu człowiekowi, jak pies ma 3 lata to odpowiada 25-letniemu człowiekowi. 
+Mówi się, że każdy rok psa równy jest 7 latom człowieka. Na przykład, jak pies ma 10 lat to odpowiada on 70 letniemu człowiekowi. Jednak ponieważ pies zaczyna być dorosły w wieku 2 lat, sugeruje się, aby liczyć dwa pierwsze lata psa po 10,5 lat człowieka, a każdy kolejny rok psa liczyć jako 4 lata. Na przykład, jak pies ma 2 lata to odpowiada on 21-letniemu człowiekowi, jak pies ma 3 lata to odpowiada 25-letniemu człowiekowi.
 
 Napisz program `dog.py`, który przeliczy wiek psa na odpowiadający mu wiek człowieka.
 
@@ -163,9 +163,9 @@ while invalid_option:
 
 print(f'Your option: {option}')
 ```
-Program wykonuje się tak długo, aż nie wybierzemy opcji a lub b , wybierając dowolny znak z klawiatury program prosi 
-nas o wybranie opcji a lub  b, ponieważ nie została wykonana instrukcja if. Jeśli wykona się instrukcja if pętla while 
-zostaje przerwana i wyświetla się komunikat zależny od wyboru opcji a lub b. 
+Program wykonuje się tak długo, aż nie wybierzemy opcji a lub b , wybierając dowolny znak z klawiatury program prosi
+nas o wybranie opcji a lub  b, ponieważ nie została wykonana instrukcja if. Jeśli wykona się instrukcja if pętla while
+zostaje przerwana i wyświetla się komunikat zależny od wyboru opcji a lub b.
 
 ## Zad. 9
 Czy poniższy kod ma ten sam cel co kod z poprzedniego zadania?
@@ -191,7 +191,7 @@ SECRET_NUMBER = random.randint(1, 10)
 Dopisz kod, który będzie pytał użytkownika o podanie liczby dopóki użytkownik nie trafi liczby `SECRET_NUMBER`. Program powinien również poinformować użytkownika za którym razem odgadł liczbę `SECRET_NUMBER`.
 
 ```
-Enter a number: 7 
+Enter a number: 7
 Enter a number: 1
 Enter a number: 2
 Enter a number: 3
@@ -245,7 +245,7 @@ for letter in 'Python':
 ```
 Instrukcja break kończy działanie pętli, następuje przejście do dalszej częśći programu.
 
-Instrukcja continue kończy iterację bieżącej pętli i wraca na początek, aby określić czy pętla 
+Instrukcja continue kończy iterację bieżącej pętli i wraca na początek, aby określić czy pętla
 wykona się ponownie lub czy zakończyć i przejść dalej.
 
 ## Zad. 13
@@ -269,19 +269,19 @@ Funkcja `range` zwraca serię kolejnych liczb całkowitych.
 ```python
 # Funkcja range z jednym argumentem
 for i in range(10):
-    print(i, end=' ') 
+    print(i, end=' ')
 ```
 
 ```python
 # Funkcja range z dwoma argumentami
 for i in range(1, 10):
-    print(i, end=' ') 
+    print(i, end=' ')
 ```
 
 ```python
 # Funkcja range z trzema argumentami
 for i in range(1, 10, 2):
-    print(i, end=' ') 
+    print(i, end=' ')
 ```
 
 Utwórz *pętle for*, która wygeneruje taki wynik:
@@ -358,7 +358,7 @@ for char in seq:
     if char == 'A':
         print(position)
     position = position + 1
-    
+
 ## Zad. 19
 Napisz kod, który dla stopni Celcjusza od 0 do 100 wyświetli odpowiedające stopnie Fahrenheita (F = 32 + 9/5 * C).
 
@@ -413,9 +413,23 @@ Enter a number: 1
 Enter a number: 5
 Sorry, you failed! The number was 3.
 ```
+import random
+randomGenerator = random.randint(1, 10)
+
+chances = 0
+while True:
+    option = int(input('Enter a number:'))
+    if option == randomGenerator:
+        print(f'You won! The nmber was {randomGenerator}')
+        break
+    chances += 1
+    if chances >= 3:
+        print(f'Sorry, you failed! The number was {randomGenerator}')
+        break
 
 ## Zad. 22
-Rozwiązując poprzednie zadanie być może wprowadziłe/aś zmienną, która przyjmowała `True` lub `False`, aby wyświetlić komunikat o przegranej użytkownika. Jeżeli tak, to zamiast tego spróbuj użyć klauzuli `else` pętli `for`.
+Rozwiązując poprzednie zadanie być może wprowadziłe/aś zmienną, która przyjmowała `True` lub `False`,
+aby wyświetlić komunikat o przegranej użytkownika. Jeżeli tak, to zamiast tego spróbuj użyć klauzuli `else` pętli `for`.
 
 
 ## Zad. 23
@@ -455,18 +469,22 @@ for i in range(len(dna) - 1 ):
 Napisz kod, który w oparciu o dwie pętle `for` wyświetli na ekranie tabliczkę mnożenia.
 
 ```python
-1   2   3   4   5   6   7   8   9   10  
-2   4   6   8   10  12  14  16  18  20  
-3   6   9   12  15  18  21  24  27  30  
-4   8   12  16  20  24  28  32  36  40  
-5   10  15  20  25  30  35  40  45  50  
-6   12  18  24  30  36  42  48  54  60  
-7   14  21  28  35  42  49  56  63  70  
-8   16  24  32  40  48  56  64  72  80  
-9   18  27  36  45  54  63  72  81  90  
+1   2   3   4   5   6   7   8   9   10
+2   4   6   8   10  12  14  16  18  20
+3   6   9   12  15  18  21  24  27  30
+4   8   12  16  20  24  28  32  36  40
+5   10  15  20  25  30  35  40  45  50
+6   12  18  24  30  36  42  48  54  60
+7   14  21  28  35  42  49  56  63  70
+8   16  24  32  40  48  56  64  72  80
+9   18  27  36  45  54  63  72  81  90
 10  20  30  40  50  60  70  80  90  100
 ```
-
+for i in range(1, 11):
+    for j in range(1, 11):
+        print("{:2d}".format(i*j), end=" ")
+    print()
+ 
 ## Zad. 25 (dla chętnych)
 Zapis dot-bracket używany jest do tekstowego przedstawienia struktury drugorzędowej cząsteczek RNA.
 
@@ -514,3 +532,14 @@ Output:
 ```
 The number 4 is not prime.
 ```
+number = int(input("Enter an integer number: "))
+
+if number > 1:
+    for i in range(2, number):
+        if(number % i) == 0:
+            print(f'The number {number} is not prime')
+            break
+    else:
+        print(f'The number {number} is prime')
+else:
+    print(f'The number {number} is not prime')
