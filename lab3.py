@@ -20,11 +20,11 @@ Listy, podobnie jak łańcuchy znaków, obsługują operator konkatenacji (`+`),
 Podaj wynik poniższych instrukcji.
 
 ```python
-print([1, 2, 3] + [4, 5, 6])  # Konkatenacja
-print([1, 2, 3] * 2)          # Powtórzenie
-print(len([1, 2, 3]))         # Funkcja len
-print(3 in [1, 2, 3])         # Przynależność
-print(3 not in [1, 2, 3])     # Przynależność
+print([1, 2, 3] + [4, 5, 6])  # Konkatenacja --> [1, 2, 3, 4, 5, 6]
+print([1, 2, 3] * 2)          # Powtórzenie --> [1, 2, 3, 1, 2, 3]
+print(len([1, 2, 3]))         # Funkcja len --> 3
+print(3 in [1, 2, 3])         # Przynależność --> True
+print(3 not in [1, 2, 3])     # Przynależność --> False
 ```
 
 
@@ -42,35 +42,47 @@ W brakujące miejsca (`_`) wpisz odpowiednie indeksy, aby wydobyć literę `h` z
 
 ```python
 lst = ['Python', 'C++', 'JavaScript']
-print(lst[_][_])
+print(lst[0][3])
 ```
 
-
 ## Zad. 4
-Listy, w odróżnieniu od łańuchów znaków, są obiektami **mutowalnymi**. Listy można więc modyfikować w miejscu (np. rozszerzać, zmniejszać lub zmieniać ich elementy). 
+Listy, w odróżnieniu od łańuchów znaków, są obiektami **mutowalnymi**. Listy można więc modyfikować w miejscu (np. rozszerzać, zmniejszać lub zmieniać 
+ich elementy). 
 
 Krótko odpowiedz, co robi każda metoda poniżej.
 
 ```python
 lst = ['a', 'b', 'c', 'b']
 
-lst.append('d')                 # 1
-lst.extend(['e', 'f'])          # 2
-lst.pop()                       # 3
-lst.remove('b')                 # 4
-lst.insert(1, 'b')              # 5
-lst.count('b')                  # 6
-lst.index('b')                  # 7
-lst.index('z')                  # 8 (błąd)
-lst.reverse()                   # 9
-lst.sort()                      # 10
-lst.sort(reverse=True)          # 11
+lst.append('d')                 # 1 --> dodanie elementu d do listy
+lst.extend(['e', 'f'])          # 2 --> dodanie do listy elementow e oraz f
+lst.pop()                       # 3 --> usuwa ostatni element listy i zwraca jego wartość
+lst.remove('b')                 # 4 --> usuwa z listy element b
+lst.insert(1, 'b')              # 5 --> dodaje element b w pozycji 1
+lst.count('b')                  # 6 --> liczy elementy b
+lst.index('b')                  # 7 --> podaje indeks pierwszego wystapienia elementu b
+lst.index('z')                  # 8 (błąd) --> wyświetla komunikat: 'z' nie wystęuje w liście
+lst.reverse()                   # 9 --> podaje elementy listy od końca
+lst.sort()                      # 10 --> układa elementy listy w kolejności alfabetycznej
+lst.sort(reverse=True)          # 11 --> układa elementy w kolejności alfabetycznej od końca
 ```
 
 ## Zad. 5
 Przyporządkuj odpowiednie wyrażnie po prawej do odpowiedniej strzałki.
+lst = [1, 3, 4, 5]
+lst.pop
+#3--> [1,3,4]
+lst = lst + [5,3]
+#5--> [1, 3, 4, 5, 3]
+lst.reverse()
+#1--> [3, 5, 4, 3, 1]
+lst.remove(5)
+#6--> [3, 4, 3, 1]
+lst.sort()
+#2--> [1, 3, 3, 4]
+lst.append(4)
+#4--> [1, 3, 3, 4, 4]
 
-![list.png](../images/list.png)
 
 
 ## Zad. 6
@@ -81,6 +93,7 @@ lst = [1, 2, 3]
 for number in lst:
     number += 10
 ```
+Powyższy kod nie zmodyfikuje listy. 
 
 ## Zad. 7
 Czy poniższy kod zmodyfikuje listę `lst`?
@@ -90,6 +103,7 @@ lst = [1, 2, 3]
 for i in range(len(lst)):
     lst[i] += 10
 ```
+Tak, kod zmodyfikuje listę lst = [11, 12, 13]. Wartości listy zostaną zwiększone o 10
 
 ## Zad. 8
 Podaj wynik poniższego kodu:
@@ -99,31 +113,40 @@ lst1 = ['a', 'b', 'c']
 lst2 = []
 for letter in lst1:
     lst2.append(letter)
-print(lst1)
-print(lst2)
+print(lst1) --> ['a', 'b', 'c']
+print(lst2) --> ['a', 'b', 'c']
 ```
 
 ## Zad. 9
 Napisz kod, który użyje pętli *for* i z listy `minutes = [2, 4, 1]` wygeneruje **nową** listę sekund `[120, 240, 60]` .
 
+minutes = [2,4,1]
+seconds = []
+for mi in minutes:
+    seconds.append(mi * 60)
+print(minutes)
+print(seconds)
 
 ## Zad. 10
 Napisz kod, który użyje pętli *for* i przekształci **istniejącą** listę `minutes = [2, 4, 1]` w `[120, 240, 60]`.
 
+minutes = [2,4,1]
+for mi in range(len(minutes)):
+    minutes[mi] *= 60
 
 ## Zad. 11
 Rozszyfruj co robią poniższe funkcje `max`, `min` i `sum`:
 
 ```python
 nums = [3, 7, 1, 5, 4]
-print(max(nums))
-print(min(nums))
-print(sum(nums))
+print(max(nums)) --> zwraca wartość maksymalną listy
+print(min(nums)) --> zwraca wartość minimalną
+print(sum(nums)) --> zwraca sumę wartości
 ```
 
 ## Zad. 12
 W jednej linii kodu (*one-liner*) oblicz średnią arytmetyczną z liczb w liście `nums` poprzedniego zadania.
-
+print(sum(nums) /5)
 
 ## Zad. 13
 Czy różni się funkcja `list()` od metody `split()`?
@@ -143,7 +166,9 @@ word = 'Bio-informatics'
 lst = word.split('-')
 print(lst)
 ```
-
+Fukcja list() tworzy listę, która powstaje z elementów zawartej w zmiennej np. "lst".
+Metoda split() tworzy listę zawierającą elementy występujące w ciągu, domyślnie elementami listy zostają ciągi znaków oddzielone od siebie białymi znakami. 
+Natomiast jeśli zdefiniujemy parametr to jego wartość będzie stanowiła kryterium tworzenia elementów listy np. word.split('-') nowe elementy listy będą powstawać po wystąpieniu tego znaku.
 
 ## Zad. 14
 Do czego służy metoda `join()`?
@@ -159,6 +184,7 @@ print(string)
 string = ''.join(lst)
 print(string)
 ```
+Metoda join() łączy wszystkie elementy listy w ciąg znaków.
 
 
 ## Zad. 15
@@ -173,6 +199,18 @@ Output:
 ```
 Mean word size: 5.1
 ```
+text = "The Wellcome Trust Sanger Institute is a world leader in genome research."
+length_words = 0
+total_words = 0
+words = text.replace(".", '').split()
+
+for word in words:
+    length_words += len(word)
+    total_words += 1
+
+average = length_words / total_words
+
+print(f'Mean word size: {average:.1f}')
 
 
 ## Zad. 16
