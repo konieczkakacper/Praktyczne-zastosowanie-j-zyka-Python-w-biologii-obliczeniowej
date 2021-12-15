@@ -564,7 +564,16 @@ Output:
 1   talk
 1   about
 ```
+text = 'The first rule of Fight Club is you do not talk about Fight Club'
+text = text.split()
+count_words= []
 
+for i in text:
+    if i not in count_words:
+        count_words.append(i)
+for i in range(0, len(count_words)):
+    print(f'{text.count(count_words[i])}  {count_words[i]}') 
+    
 # Zbiory (*sets*)
 
 ## Zad. 30
