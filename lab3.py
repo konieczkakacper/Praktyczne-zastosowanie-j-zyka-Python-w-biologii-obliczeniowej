@@ -15,7 +15,7 @@ Utwórz listę dwuelementową, w której pierwszym elementem będzie liczba zmie
 lst =[3.14, 'Pi number']
 
 ## Zad. 2
-Listy, podobnie jak łańcuchy znaków, obsługują operator konkatenacji (`+`), powtórzenia (`*`), przynależności (`in`) oraz funkcję `len`. 
+Listy, podobnie jak łańcuchy znaków, obsługują operator konkatenacji (`+`), powtórzenia (`*`), przynależności (`in`) oraz funkcję `len`.
 
 Podaj wynik poniższych instrukcji.
 
@@ -46,8 +46,8 @@ print(lst[0][3])
 ```
 
 ## Zad. 4
-Listy, w odróżnieniu od łańuchów znaków, są obiektami **mutowalnymi**. Listy można więc modyfikować w miejscu (np. rozszerzać, zmniejszać lub zmieniać 
-ich elementy). 
+Listy, w odróżnieniu od łańuchów znaków, są obiektami **mutowalnymi**. Listy można więc modyfikować w miejscu (np. rozszerzać, zmniejszać lub zmieniać
+ich elementy).
 
 Krótko odpowiedz, co robi każda metoda poniżej.
 
@@ -93,7 +93,7 @@ lst = [1, 2, 3]
 for number in lst:
     number += 10
 ```
-Powyższy kod nie zmodyfikuje listy. 
+Powyższy kod nie zmodyfikuje listy.
 
 ## Zad. 7
 Czy poniższy kod zmodyfikuje listę `lst`?
@@ -167,7 +167,7 @@ lst = word.split('-')
 print(lst)
 ```
 Fukcja list() tworzy listę, która powstaje z elementów zawartej w zmiennej np. "lst".
-Metoda split() tworzy listę zawierającą elementy występujące w ciągu, domyślnie elementami listy zostają ciągi znaków oddzielone od siebie białymi znakami. 
+Metoda split() tworzy listę zawierającą elementy występujące w ciągu, domyślnie elementami listy zostają ciągi znaków oddzielone od siebie białymi znakami.
 Natomiast jeśli zdefiniujemy parametr to jego wartość będzie stanowiła kryterium tworzenia elementów listy np. word.split('-') nowe elementy listy będą powstawać po wystąpieniu tego znaku.
 
 ## Zad. 14
@@ -221,19 +221,19 @@ Wyjaśnij, co robią poniższe dwie instrukcje.
 codons = [['TGA', 'TAA', 'TAG'], ['GAA', 'GAG'], ['TGG'], []]
 
 # Instrukcja 1 (czytelna)
-for lst in codons:                 
+for lst in codons:
     for codon in lst:
         print(codon)
 
 print()                            # Pusta linia dla rozdzielenia obu instrukcji
 
 # Instrukcja 2 (mniej czytelna)
-for i in range(len(codons)):       
+for i in range(len(codons)):
     lst = codons[i]
     for j in range(len(lst)):
         print(lst[j])
 ```
-
+Instrukcje wypisują wartości zawarte w tablicy dwuwymiarowej.
 
 # Krotki (*tuples*)
 
@@ -248,12 +248,17 @@ tup = ('a', 'b', 'c', 'd')      # Krotka 4-elementowa
 ```
 
 Sprawdź, czy krotki obsługują indeksowanie, wycinki i funkcję `len`.
+Krotki obsługują indeksowanie, wycinki oraz fukcję len.
+print(tup[0])
+print(tup[1:3])
+print(len(tup))
 
 
 # Słowniki (*dictionaries*)
 
 ## Zad. 18
-Słowniki są *nieuporządkowanymi* kolekcjami obiektów. Słowniki wiążą zbiór wartości z kluczami, tak by element słownika można było pobrać za pomocą klucza, pod którym jest on przechowywany.
+Słowniki są *nieuporządkowanymi* kolekcjami obiektów. Słowniki wiążą zbiór wartości z kluczami,
+tak by element słownika można było pobrać za pomocą klucza, pod którym jest on przechowywany.
 
 ```python
 d = {}                                          # Pusty słownik
@@ -273,6 +278,7 @@ print(en2pl['hi'])
 3. `True`
 4. `0`
 
+Kod wygeneruje wartość 2.
 
 ## Zad. 19
 Którą z wartości wygeneruje poniższy kod?
@@ -287,6 +293,7 @@ print(en2pl['cześć'])
 3. `0`
 4. `Błąd`
 
+Kod wygeneruje wartość 4.
 
 ## Zad. 20
 Którą z wartości wygeneruje poniższy kod?
@@ -303,6 +310,7 @@ print(en2pl.get('hello', 'no translation'))
 3. `None None 'no translation'`
 4. `None 'hello' None`
 
+Kod wygeneruje wartość 2.
 
 ## Zad. 21
 Którą z wartości wygeneruje poniższy kod?
@@ -318,6 +326,7 @@ print(en2pl['thanks'])
 3. `None`
 4. `Error`
 
+Kod wygeneruje wartość 2.
 
 ## Zad. 22
 Wyjaśnij, co robi poniższy kod:
@@ -328,15 +337,16 @@ en2pl = {'hi': 'cześć', 'bye': 'na razie', 'thanks': 'dzięki'}
 for key in en2pl:
     print(key, en2pl[key])
 ```
+Pętla for iteruje po kluczach w słowniku i wypisuje na ekran klucz oraz jego wartość.
 
 ## Zad. 23
 Co zwracają poniższe trzy metody działające na słowniku.
 
 ```python
 en2pl = {'hi': 'cześć', 'bye': 'na razie', 'thanks': 'dzięki'}
-print(en2pl.keys())
-print(en2pl.values())
-print(en2pl.items())
+print(en2pl.keys()) --> wypisuje klucze
+print(en2pl.values()) --> zwraca wartośći poszczególnych kluczy
+print(en2pl.items()) --> wypisuje wszystkie elementy słownika (klucze oraz ich wartości)
 ```
 
 
@@ -347,9 +357,9 @@ Wyjaśnij, co robi poniższy kod:
 en2pl = {'hi': 'cześć', 'bye': 'na razie', 'thanks': 'dzięki'}
 
 for key, value in en2pl.items():
-    print(key, values)
+    print(key, value)
 ```
-
+Kod wypisuje klucze oraz ich wartości.
 
 ## Zad. 25
 Poniższy program zawiera **3 błędy**. Odszukaj je i popraw.
@@ -371,38 +381,58 @@ print(d['alpha'][4])
 print(d['beta'][0])
 
 print(d['delta']['val'])
-```
 
+```
+d = {
+    'alpha': [1, 2, 3],
+    'beta': 'bioinfo',
+    'gamma': 4,
+    'delta': {'key': 'val'}
+}
+
+print(d['alpha'])
+
+d['alpha'].append(4)
+
+print(d['alpha'][0:4])
+
+print(d['beta'][0])
+
+print(d['delta']['key'])
 
 ## Zad. 26
-Napisz program `molmass.py`, który w oparciu o poniższy słownik obliczy masę molową (kDa) sekwencji białkowej wprowadzonej przez użytkownika.
+Napisz program `molmass.py`, który w oparciu o poniższy słownik obliczy masę molową (kDa) sekwencji białkowej
+wprowadzonej przez użytkownika.
 
-Masa molowa sekwencji białkowej to suma mas wszystkich aminokwasów znajdujących się w sekwencji. Jeżeli sekwencja użytkownika zawiera znak, którego nie ma w słowniku `protein_weights` to przyjmij, że masa molowa tego znaku to `0`. Na przykład, masa molowa sekwencji `MKSX` jest równa 149.2113 + 146.1876 + 105.0926 + 0 = 400.4915
+Masa molowa sekwencji białkowej to suma mas wszystkich aminokwasów znajdujących się w sekwencji. Jeżeli
+sekwencja użytkownika zawiera znak, którego nie ma w słowniku `protein_weights` to przyjmij,
+że masa molowa tego znaku to `0`. Na przykład, masa molowa sekwencji
+`MKSX` jest równa 149.2113 + 146.1876 + 105.0926 + 0 = 400.4915
 
 ```python
-protein_weights = { 
-   'A': 89.0932, 
-   'C': 121.1582, 
-   'D': 133.1027, 
-   'E': 147.1293, 
-   'F': 165.1891, 
-   'G': 75.0666, 
-   'H': 155.1546, 
-   'I': 131.1729, 
-   'K': 146.1876, 
-   'L': 131.1729, 
-   'M': 149.2113, 
-   'N': 132.1179, 
-   'O': 255.3134, 
-   'P': 115.1305, 
-   'Q': 146.1445, 
-   'R': 174.201, 
-   'S': 105.0926, 
-   'T': 119.1192, 
-   'U': 168.0532, 
-   'V': 117.1463, 
-   'W': 204.2252, 
-   'Y': 181.1885 
+protein_weights = {
+   'A': 89.0932,
+   'C': 121.1582,
+   'D': 133.1027,
+   'E': 147.1293,
+   'F': 165.1891,
+   'G': 75.0666,
+   'H': 155.1546,
+   'I': 131.1729,
+   'K': 146.1876,
+   'L': 131.1729,
+   'M': 149.2113,
+   'N': 132.1179,
+   'O': 255.3134,
+   'P': 115.1305,
+   'Q': 146.1445,
+   'R': 174.201,
+   'S': 105.0926,
+   'T': 119.1192,
+   'U': 168.0532,
+   'V': 117.1463,
+   'W': 204.2252,
+   'Y': 181.1885
 }
 ```
 
@@ -453,6 +483,7 @@ for char in seq:
     d[char] += 1
 print(d)
 ```
+Tworzy słownik, w którym wartościami jest liczba wystąpień danej litery w ciągu znaków
 
 ## Zad. 29
 Napisz kod, który wykorzysta słownik żeby wyświetlić liczbę wystąpień każdego wyrazu w poniższym tekście.
