@@ -55,7 +55,20 @@ SEQUENCES = {
 
 # Your code goes here.
 ```
+if __name__ == '__main__':
+    seq_elem1 = ''
+    seq_elem2 = ''
+    min_dist = len(SEQUENCES['seq1'])
 
+    for seq in itertools.combinations(SEQUENCES,2): #obliczanie dystansu hamminga dla wszystkich kombinacji
+        dist = hamming_distance(SEQUENCES[seq[0]], SEQUENCES[seq[1]])
+        print(f'{seq[0]} i {seq[1]} dystans hamminga = {hamming_distance(SEQUENCES[seq[0]], SEQUENCES[seq[1]])}')
+
+        if dist < min_dist: #wyszukiwanie najmniejszego dystansu
+            min_dist = dist
+            seq_elem1 = seq[0]
+            seq_elem2 = seq[1]
+    print(f'Najmnieszy dystans wystepuje dla {seq_elem1} oraz {seq_elem2} = {min_dist} ')
 
 ## Zad. 4
 Funkcja `permutations` zwraca permutacje przekazanej sekwencji. Na ile różnych sposób można usadzić 10 osób przy stole?
@@ -75,7 +88,14 @@ for tup in itertools.permutations(nucleotides):
 # ('G', 'A', 'T')
 # ('G', 'T', 'A')
 ```
+import itertools
 
+table = ['Anna', 'Andrzej', 'Igor', 'Antoni', 'Łucja', 'Kajetan', 'Agata', 'Dominika', 'Stanisław', 'Mikołaj']
+counter = 0
+for person in itertools.permutations(table):
+    counter += 1
+    #print(person)
+print(counter)
 
 ## Zad. 5
 Z [dokumentacji modułu itertools](https://docs.python.org/3/library/itertools.html) wybierz odpowiednią *funkcję kombinatoryczną*, która uprości poniższe trzy zagnieżdżone pętle `for` do jednej pętli.
@@ -90,7 +110,13 @@ for v1 in lst1:
         for v3 in lst3:
             print(v1, v2, v3)
 ```
+import itertools
 
+lst1 = [1, 2, 3]
+lst2 = ['a', 'b', 'c']
+lst3 = ['A', 'B', 'C']
+for elem in itertools.product(lst1, lst2, lst3):
+    print(f'{elem[0]}, {elem[1]}, {elem[2]}')
 
 # Moduł [random](https://docs.python.org/3/library/random.html)
 
@@ -105,22 +131,22 @@ Funkcje:
 ```python
 import random
 
-# a
+# a --> 4
 print(random.random())
 
-# b
+# b --> 5
 print(random.uniform(1, 3))
 
-# c
+# c --> 6
 print(random.randint(1, 3))
 
-# d
+# d --> 2
 print(random.choice(['Head', 'Tails']))
 
-# e
+# e --> 1
 print(random.sample(['a', 'b', 'c'], 2))
 
-# f
+# f --> 3
 lst = ['a', 'b', 'c', 'd']
 random.shuffle(lst)
 print(lst)
@@ -155,7 +181,15 @@ Output:
 ```
 ATTGCTGATGATGAGTAGATCGTATAGGATTAGTAGAGATATGATAGAGC
 ```
+import random
 
+def nucl_generator(length):
+    seq=''
+    for nucl in range(length):
+        nucl = random.choice(['A', 'T', 'G', 'C'])
+        seq += nucl
+    return seq
+print(nucl_generator(length = int(input('Enter a DNA length:'))))
 
 # Moduł [sys](https://docs.python.org/3/library/sys.html)
 
@@ -173,6 +207,19 @@ print(sys.argv[0])    # Nazwa wykonywanego programu
 ```
 
 Utwórz program `random_dna2.py`, który będzie przyjmował od użytkownika długość sekwencji DNA jako argument (a nie za pomocą funkcji `input`).
+
+import sys
+import random
+
+def nucl_generator(length):
+    seq=''
+    for nucl in range(length):
+        nucl = random.choice(['A', 'T', 'G', 'C'])
+        seq += nucl
+    return seq
+
+if __name__=='__main__':
+    print(nucl_generator(int(sys.argv[1])))
 
 Input:
 
@@ -195,6 +242,9 @@ TCGTCGCTAGTAGCTGATGATCGATGCGCTGATCGCTGATGATCGTAGCG
 
 ## Zad. 9
 Utwórz program `simulation.py`, który 1000 razy wykona program `random_dna2.py` dla sekwencji długości 20 nukleotydów.
+import os
+for i in range(1000):
+    os.system('python3 random_dna2.py 20')
 
 ```python
 import os
@@ -237,6 +287,7 @@ for i in range(10):
     oh.write(file.name)
     oh.close()
 ```
+Kod tworzy katalog o nazwie data jeśli taki nie istnieje i tworzy w nim 10 plików .txt, których zawartość to nazwa pliku.
 
 ## Zad. 11
 Sprawdź i wyjaśnij, co robi poniższy kod.
@@ -253,6 +304,7 @@ for file in directory.iterdir():
     print(file.suffix)
     print()
 ```
+Odnajduje katalog data i po nim iteruje zwracając ścieżkę do pliku każdego z plików, nazwę pliku, nazwę bez rozszerzenia oraz typ rozszerzenia.
 
 ## Zad. 12
 Sprawdź i wyjaśnij, co robi poniższy kod.
@@ -270,7 +322,7 @@ for path in directory.iterdir():
     if path.is_dir():
         print(f'Path is a directory: {path}')
 ```
-
+Kod tworzy podkatalog w katalogu data jesśli taki nie istnieje iteruje po zawartości tego podkatalogu sparawdzjąc rodzaje elementów (plik lub katalog) oraz wypisując jego ścieżkę.
 
 ## Zad. 13
 Sprawdź i wyjaśnij, co robi poniższy kod.
@@ -286,7 +338,7 @@ if directory.exists():
 if file.exists():
     print('File exists.')
 ```
-
+Sprawdza czy istnieje katalog data oraz czy w katalogu data występuje plik file11.txt
 ## Zad. 14
 W skompresowanym pliku [human_proteins.zip](../data/human_proteins.zip) znajduje się katalog zawierający 250 sekwencji białkowych człowieka (każda sekwencja w osobnym pliku). Użyj modułu `pathlib`, aby otworzyć każdy z 250 plików i obliczyć średnią długość wszystkich sekwencji.
 
@@ -294,6 +346,15 @@ W skompresowanym pliku [human_proteins.zip](../data/human_proteins.zip) znajduje
 import pathlib
 
 # Your code goes here.
+
+directory = pathlib.Path('human_proteins')
+length=[]
+for path in directory.iterdir():
+    with open(path, 'r') as fh:
+        fh.readline()
+        proteins = fh.read().strip()
+        length.append(len(proteins))
+print(f'Mean sequence length:{(sum(elem for elem in length)) / len(length)}')
 ```
 
 Output:
@@ -320,7 +381,7 @@ f.close()
 print(respond)                    # Obiekt bajtowy
 print(respond.decode('utf-8'))    # Łańcuch znaków (string)
 ```
-
+Pobiera dane z podanego linku odczytuje je, zapisuje a następnie je wypisuje na ekran
 
 ## Zad. 16
 Sprawdź i wyjaśnij, co robi poniższy kod.
@@ -335,6 +396,8 @@ for line in f:
         print(line)
 f.close()
 ```
+Pobiera dane z podanego linku, zapisuje je, a następnie linia po linii zamienia
+dane na string. Gdy linia nie zaczyna się na > to zostaje wypisana.
 
 ## Zad. 17
 Utwórz skrypt `uniprot1.py`, który pobierze z bazy UniProt sekwencje białkowe (w formacie FASTA) dla podanych poniżej identyfikatorów i zapisze pobrane sekwencje do pliku `uniprot.txt`.
@@ -345,6 +408,10 @@ import urllib.request
 uniprot_ids = ['P68431', 'Q6ZQ08', 'O94687']
 
 # Your code goes here.
+
+with open('uniprot.txt', 'w') as fh:
+    for id in uniprot_ids:
+        fh.write(urllib.request.urlopen(f'http://www.uniprot.org/uniprot/{id}.fasta').read().decode('utf-8'))
 ```
 
 ## Zad. 18
@@ -357,6 +424,16 @@ for i in range(10):
     print(i)
     time.sleep(0.3)
 ```
+import urllib.request
+import time
+
+uniprot_ids = ['P68431', 'Q6ZQ08', 'O94687']
+
+# Your code goes here.
+with open('uniprot.txt', 'w') as fh:
+    for id in uniprot_ids:
+        fh.write(urllib.request.urlopen(f'http://www.uniprot.org/uniprot/{id}.fasta').read().decode('utf-8'))
+        time.sleep(1)
 
 W skrypcie `uniprot1.py` zadbaj o to, aby czas pomiędzy wykonywaniem instrukcji `urllib.request.urlopen` wynosił przynajmniej 1 sekundę.
 
@@ -394,10 +471,25 @@ python3 uniprot2.py --id P68431
 python3 uniprot2.py -i P68431 Q6ZQ08
 python3 uniprot2.py --id P68431 Q6ZQ08 -o output.fasta
 ```
-
+Argparse odpowiada za obsługę argumentów linii komend. Dzięki niemu możemy przekazywać
+wartości z zewnątrz np. podczas uruchamiania konsoli.
 
 ## Zad. 20
-Do skryptu `uniprot2.py` dodaj kod, który pobierze rekordy sekwencji z bazy UniProt i zapisze je do odpowiedniego pliku tekstowego.
+Do skryptu `uniprot2.py` dodaj kod, który pobierze rekordy sekwencji
+z bazy UniProt i zapisze je do odpowiedniego pliku tekstowego.
+
+import argparse
+import urllib.request
+
+parser = argparse.ArgumentParser(description='Retrieve proteins from UniProt database')
+parser.add_argument('-i', '--id', dest='uniprot', required=True, nargs='+', help='Uniprot ID (e.g. P68431)')
+parser.add_argument('-o', '--o', '--out', dest='output', default='uniprot.txt', help='Output filename (default: %(default)s)')
+
+args = parser.parse_args()
+
+with open(args.output,'w') as f:
+        for arg in args.uniprot:
+            f.write(urllib.request.urlopen(f'http://www.uniprot.org/uniprot/{arg}.fasta').read().decode('utf-8'))
 
 
 ## Zad. 21
@@ -407,6 +499,20 @@ UniProt pozwala wyświetlać rekord białkowy *w dwóch formatach*:
 2. *txt*:   <a href="http://www.uniprot.org/uniprot/Q93062.txt">http://www.uniprot.org/uniprot/Q93062.txt</a>
 
 Dodaj do skryptu argument `--format`, który będzie umożliwiał użytkownikowi wybranie jednego z dwóch formatów (domyślnie `fasta`).
+
+import argparse
+import urllib.request
+
+parser = argparse.ArgumentParser(description='Retrieve proteins from UniProt database')
+parser.add_argument('-f', '--f', '--format', dest='format', default='fasta', help='Input file format')
+parser.add_argument('-i', '--id', dest='uniprot', required=True, nargs='+', help='Uniprot ID (e.g. P68431)')
+parser.add_argument('-o', '--o', '--out', dest='output', default='uniprot.txt', help='Output filename (default: %(default)s)')
+
+args = parser.parse_args()
+
+with open(args.output,'w') as f:
+        for arg in args.uniprot:
+            f.write(urllib.request.urlopen(f'http://www.uniprot.org/uniprot/{arg}.{args.format}').read().decode('utf-8'))
 
 
 ## Zad. 22
@@ -450,3 +556,41 @@ python random_dna3.py 100
 python random_dna3.py 100 -a 0.2 -c 0.3
 python random_dna3.py 100 -v
 ```
+import argparse
+
+__version__ = 3.0
+
+import random
+
+p = argparse.ArgumentParser(description='Generate a random DNA sequence')
+p.add_argument('dna_length', type=int, help='Length of random DNA sequence')
+p.add_argument('-a', '--a', dest='adenine', type=float,
+               default=0.25, help='Adenine probability [default =  %(default)s]')
+p.add_argument('-c', '--c', dest='cytosine', type=float,
+               default=0.25, help='Cytosine probability [default =  %(default)s]')
+p.add_argument('-g', '--g', dest='guanine', type=float,
+               default=0.25, help='Guanine probability [default =  %(default)s]')
+p.add_argument('-t', '--t', dest='thymine', type=float,
+               default=0.25, help='Thymine probability [default =  %(default)s]')
+p.add_argument('-v', '--v', '--version', action='version',
+               version=f'v.{__version__}',
+               help="Show tool's version number and exit")
+args = p.parse_args()
+
+probs = [args.adenine, args.cytosine, args.guanine, args.thymine]
+nucl = ['A', 'T', 'G', 'C']
+
+if sum(prob for prob in probs) != 1:
+    print(f'Probability of nucleotides is wrong')
+    exit()
+d = {}
+for nucleotide, prob in zip(nucl, probs):
+    d[nucleotide] = prob
+
+seq = []
+for keys, values in d.items():
+    print(values * args.dna_length)
+    for i in range(round(values * args.dna_length)):
+        seq.append(keys)
+random.shuffle(seq)
+print(''.join(seq))
